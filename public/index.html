@@ -11,8 +11,25 @@
 </head>
 <body>
   <header class="masthead">
-    <div class="shell brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Hamilton <strong>GL Review</strong></span></div>
+    <div class="shell brand">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Hamilton <strong>GL Review</strong></span>
+      <button class="sop-trigger" id="open-sop" type="button" aria-haspopup="dialog" aria-controls="sop">View SOP</button>
+    </div>
   </header>
+  <dialog id="sop" aria-labelledby="sop-title">
+    <div class="sop-header">
+      <h2 id="sop-title">GL review SOP</h2>
+      <button class="secondary" id="close-sop" type="button" autofocus>Close</button>
+    </div>
+    <ol class="sop-steps">
+      <li><strong>Prepare the two Excel files.</strong> Export <em>Trailing Profit and Loss Detail</em> for the property with at least two months of actuals. In the GL heads workbook, put the account codes to monitor in column A or under a GL Account header.</li>
+      <li><strong>Upload and run the review.</strong> Choose the P&amp;L export and the GL heads workbook in their respective fields. Select <strong>Run review</strong>.</li>
+      <li><strong>Confirm the comparison months.</strong> Check the property name and the two months shown. The dashboard starts with the latest two months in the report. Use <strong>Current month</strong> and <strong>Compare with</strong> to choose a different pair. <strong>Difference</strong> is the current month amount minus the comparison month amount.</li>
+      <li><strong>Review the results.</strong> Start with <strong>Selected GL heads</strong> for monitored accounts or switch to <strong>All P&amp;L lines</strong>. Check any messages about unmatched codes or unreadable amounts. Clear <strong>Changes only</strong> to include lines with no change.</li>
+      <li><strong>Save the review.</strong> Select <strong>Download Excel</strong> to save the selected GL changes, all changes, full P&amp;L review, and review notes for the chosen months.</li>
+    </ol>
+  </dialog>
   <main class="shell">
     <section class="intro">
       <h1>GL review dashboard</h1>

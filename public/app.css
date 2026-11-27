@@ -44,6 +44,13 @@ button:disabled { opacity: .55; cursor: default; }
 button span { margin-left: 6px; }
 :focus-visible { outline: 3px solid #197eae; outline-offset: 3px; }
 .secondary { background: #fff; border-color: #afc6cb; color: #12534f; }
+.sop-trigger { margin-inline-start: auto; border-color: #61908d; background: #173e4a; color: #f7fcfc; font-size: 13px; }
+#sop { width: min(600px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: clamp(16px, 5vw, 27px); border: 1px solid var(--line); border-radius: 15px; color: var(--ink); box-shadow: 0 12px 40px #102b3840; }
+#sop::backdrop { background: #102b38a6; }
+.sop-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sop-steps { margin: 16px 0 0; padding-inline-start: 22px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.sop-steps li + li { margin-top: 12px; }
+.sop-steps strong, .sop-steps li::marker { color: var(--ink); }
 #status { margin-top: 13px; font-size: 14px; }
 #status.error { color: #9a332b; }
 #results { margin-top: 36px; }

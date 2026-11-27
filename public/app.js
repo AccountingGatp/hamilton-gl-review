@@ -170,6 +170,8 @@ function download() {
   ], 'Hamilton_GL_Review_' + currentMonth.replace(' ', '_') + '.xlsx');
 }
 
+$('open-sop').addEventListener('click', () => $('sop').showModal());
+$('close-sop').addEventListener('click', () => $('sop').close());
 $('upload').addEventListener('submit', load);
 $('export').addEventListener('click', download);
 $('current').addEventListener('change', () => {
