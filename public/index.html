@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102b38">
+  <title>Hamilton GL Review</title>
+  <link rel="stylesheet" href="app.css">
+  <script defer src="vendor/fflate.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Hamilton <strong>GL Review</strong></span></div>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <h1>GL review dashboard</h1>
+      <p>Compare monthly P&amp;L activity and flag changes in the accounts you monitor.</p>
+    </section>
+    <form class="panel upload" id="upload">
+      <h2>Source files</h2>
+      <div class="uploads">
+        <label class="file-card"><strong>Trailing P&amp;L detail</strong><span>Monthly P&amp;L export</span><input id="report" type="file" accept=".xlsx,.xlsm" required></label>
+        <label class="file-card"><strong>GL heads</strong><span>List of accounts to monitor</span><input id="heads" type="file" accept=".xlsx,.xlsm" required></label>
+      </div>
+      <div class="upload-footer"><button type="submit" id="run">Run review <span aria-hidden="true">→</span></button><span>Excel workbooks are processed in your browser.</span></div>
+      <p id="status" role="status" hidden></p>
+    </form>
+    <section id="results" hidden aria-labelledby="review-title">
+      <div class="results-head">
+        <div><h2 id="review-title">Review results</h2><p id="report-name"></p></div>
+        <button class="secondary" id="export" type="button">Download Excel <span aria-hidden="true">↓</span></button>
+      </div>
+      <div class="metrics">
+        <div class="panel metric"><span>P&amp;L lines</span><strong id="line-count"></strong></div>
+        <div class="panel metric"><span>Matched GL heads</span><strong id="matched-count"></strong></div>
+        <div class="panel metric"><span>Selected accounts with changes</span><strong id="selected-count"></strong></div>
+        <div class="panel metric"><span>All lines with changes</span><strong id="change-count"></strong></div>
+      </div>
+      <aside id="warnings" class="panel warnings" hidden aria-label="Review notes"></aside>
+      <section class="panel chart-panel" aria-labelledby="chart-title">
+        <h3 id="chart-title">Largest changes</h3>
+        <p id="chart-caption">Ranked by absolute change in the current view.</p>
+        <div id="chart"></div>
+      </section>
+      <section class="panel table-panel" aria-label="Review detail">
+        <div class="toolbar">
+          <div class="views" aria-label="Review view">
+            <button type="button" id="selected" aria-pressed="true">Selected GL heads</button>
+            <button type="button" id="all" aria-pressed="false">All P&amp;L lines</button>
+          </div>
+          <div class="periods">
+            <label>Current month<select id="current"></select></label>
+            <label>Compare with<select id="prior"></select></label>
+          </div>
+        </div>
+        <div class="filters">
+          <label class="search"><span>Search accounts</span><input type="search" id="query" placeholder="GL code or account name"></label>
+          <label class="check"><input id="changed" type="checkbox" checked> Changes only</label>
+          <label class="threshold">Minimum change<input type="number" id="threshold" min="0" step=".01" value="0"></label>
+        </div>
+        <p id="shown" aria-live="polite"></p>
+        <p id="empty" hidden>No P&amp;L lines match the current view and filters.</p>
+        <div class="scroll" tabindex="0" role="region" aria-label="P&L comparison table">
+          <table>
+            <thead><tr><th scope="col">Account</th><th scope="col" id="current-label"></th><th scope="col" id="prior-label"></th><th scope="col">Difference</th><th scope="col">Change %</th><th scope="col">Source row</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div id="pagination" class="pagination" hidden><button class="secondary" id="previous" type="button">Previous</button><span id="page"></span><button class="secondary" id="next" type="button">Next</button></div>
+      </section>
+    </section>
+  </main>
+  <footer class="shell">GATP Solutions <span>·</span> Hamilton accounting</footer>
+</body>
+</html>
